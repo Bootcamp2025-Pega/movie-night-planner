@@ -5,7 +5,7 @@ on:
     branches:
       - main
   pull_request:
-    branchers:
+    branches:
       - main
 
 jobs:
@@ -13,31 +13,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up node.js
-      with:
-        node-version: '14'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-     - name: Install Frontend Dependencies
-       working-directory: frontend
-       run: npm install
+      - name: Install Frontend Dependencies
+        working-directory: frontend
+        run: npm install
 
-     - name: Run Frontend tests
-       working-directory: frontend
-       run: npm test -- --watchAll=false
+      - name: Run Frontend Tests
+        working-directory: frontend
+        run: npm test -- --watchAll=false
 
-     - name: Build Frontend
-       working-directory: frontend
-       run: npm run build
+      - name: Build Frontend
+        working-directory: frontend
+        run: npm run build
 
-     - name: Install Backend Dependencies
-       working-directory: backend
-       run: npm install
+      - name: Install Backend Dependencies
+        working-directory: backend
+        run: npm install
 
-     - name: Run Backend Tests
-       working-directory: backend
-       run: npm test
+      - name: Run Backend Tests
+        working-directory: backend
+        run: npm test
 
-     - name: SonarCloud Scan
-       uses: SonarSource/sonarcloud-github-action@master
-       env:
-         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}	
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
