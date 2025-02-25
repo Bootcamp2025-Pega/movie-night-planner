@@ -8,7 +8,7 @@ export const getMovie = async (req: Request, res: Response) => {
     const movie = await knex.raw(`SELECT * FROM movies WHERE title = '${title}'`);
     res.json(movie.rows);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch movie' });
+    res.status(500).json({ error: 'Failed to fetch movie :(' });
   }
 };
 
