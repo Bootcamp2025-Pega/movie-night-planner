@@ -1,6 +1,17 @@
 import { Request, Response } from 'express';
 import knex from '../db/knex';
 
+
+export const getMovie = async (req: Request, res: Response) => {
+  try {
+    const { title } = req.body;
+    const movie = await knex.raw(`SELECT * FROM movies WHERE title = '${title}'`);
+    res.json(movie.rows);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch movie :(' });
+  }
+};
+
 export const getMovies = async (req: Request, res: Response) => {
   try {
     const movies = await knex('movies').select('*');
