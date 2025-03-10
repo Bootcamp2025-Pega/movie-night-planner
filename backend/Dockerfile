@@ -32,19 +32,9 @@ COPY --from=builder /app/node_modules ./node_modules
 
 # Set URL that App will be exposed
 EXPOSE 4000
+# Add debug port
+EXPOSE 9229
 
 # sets entry point command to automatically
 # run application on `docker run`
-ENTRYPOINT ["node", "./dist/index.js"]
-
-
-# COPY ./dist ./dist
-
-# # Copy any remaining files
-# COPY . .
-
-# # Expose the server port
-# EXPOSE 4000
-
-# # Command to start the server
-# CMD ["npm", "run", "start"]
+ENTRYPOINT ["node", "./dist/src/index.js"]
