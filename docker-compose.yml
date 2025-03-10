@@ -20,6 +20,7 @@ services:
       - db
     ports:
       - "4000:4000"
+      - "9229:9229"
     environment:
       DATABASE_HOST: db
       DATABASE_PORT: 5432
@@ -29,6 +30,7 @@ services:
     volumes:
       - ./backend:/usr/src/app
     command: npm run start
+    # command: node --inspect=0.0.0.0:9229 ./dist/src/index.js
 
 volumes:
   db-data:
