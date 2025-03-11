@@ -37,4 +37,7 @@ EXPOSE 9229
 
 # sets entry point command to automatically
 # run application on `docker run`
-ENTRYPOINT ["node", "./dist/src/index.js"]
+# ENTRYPOINT ["node", "./dist/src/index.js"]
+
+# For debugging, use this instead of the regular ENTRYPOINT
+ENTRYPOINT ["node", "--inspect=0.0.0.0:9229", "./dist/src/index.js"]
