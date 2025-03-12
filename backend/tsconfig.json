@@ -9,6 +9,8 @@
     },
     "include": [
         "./src/**/*",
-        "./tests/**/*"
+        "./tests/**/*",
+        "startup.ts", 
+        "knexfile.ts"
     ]
 }

@@ -14,6 +14,8 @@ COPY tsconfig.json ./
 # Copy the source files before building
 COPY ./src ./src
 COPY ./knexfile.ts ./
+COPY ./startup.ts ./
+COPY ./migrations/ ./dist/migrations
 
 # Now run the TypeScript build
 RUN npm run build
@@ -40,4 +42,4 @@ EXPOSE 9229
 # ENTRYPOINT ["node", "./dist/src/index.js"]
 
 # For debugging, use this instead of the regular ENTRYPOINT
-ENTRYPOINT ["node", "--inspect=0.0.0.0:9229", "./dist/src/index.js"]
+ENTRYPOINT ["node", "--inspect=0.0.0.0:9229", "./dist/startup.js"]

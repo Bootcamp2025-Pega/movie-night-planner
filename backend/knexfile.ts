@@ -12,7 +12,7 @@ const config: { [key: string]: Knex.Config } = {
       database: process.env.DATABASE_NAME || 'movie_night_db'
     },
     migrations: {
-      directory: './src/db/migrations'
+      directory: './migrations'
     },
     seeds: {
       directory: './src/db/seeds'
@@ -30,7 +30,7 @@ const config: { [key: string]: Knex.Config } = {
       database: process.env.DATABASE_NAME
     },
     migrations: {
-      directory: './src/db/migrations'
+      directory: './migrations'
     },
     seeds: {
       directory: './src/db/seeds'
