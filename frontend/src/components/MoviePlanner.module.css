@@ -1,0 +1,91 @@
+.container {
+  @apply max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md;
+}
+
+.title {
+  @apply text-3xl font-bold mb-6;
+}
+
+.formContainer {
+  @apply mb-8 p-4 bg-gray-50 rounded-lg shadow-sm;
+}
+
+.formWrapper {
+  @apply flex flex-wrap gap-4;
+}
+
+.titleInput {
+  @apply flex-1 p-2 border rounded shadow-inner;
+}
+
+.genreInput {
+  @apply w-32 p-2 border rounded shadow-inner;
+}
+
+.ratingSelect {
+  @apply w-24 p-2 border rounded shadow-inner;
+}
+
+.actionButton {
+  @apply px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center gap-2 shadow;
+}
+
+.moviesList {
+  @apply space-y-4;
+}
+
+.movieCard {
+  @apply p-4 rounded-lg border shadow-sm;
+}
+
+.movieCardWatched {
+  @apply bg-green-50;
+}
+
+.movieCardUnwatched {
+  @apply bg-white;
+}
+
+.movieContent {
+  @apply flex items-center justify-between;
+}
+
+.movieInfo {
+  @apply flex-1;
+}
+
+.movieTitle {
+  @apply text-xl font-semibold;
+}
+
+.movieDetails {
+  @apply flex items-center gap-4 text-sm text-gray-600;
+}
+
+.movieRating {
+  @apply flex items-center;
+}
+
+.buttonGroup {
+  @apply flex items-center gap-2;
+}
+
+.watchedButton {
+  @apply px-4 py-2 rounded shadow;
+}
+
+.watchedButtonActive {
+  @apply bg-green-100;
+}
+
+.watchedButtonInactive {
+  @apply bg-gray-100;
+}
+
+.editButton {
+  @apply p-2 rounded hover:bg-gray-100 shadow;
+}
+
+.deleteButton {
+  @apply p-2 rounded hover:bg-gray-100 text-red-500 shadow;
+}
