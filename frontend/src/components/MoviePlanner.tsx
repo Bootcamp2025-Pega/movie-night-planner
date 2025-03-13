@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Plus, Star, Edit2, Trash2, Check } from 'lucide-react';
-import styles from './MoviePlanner.module.css';
+import { Plus, Star, Edit2, Trash2, Check, X } from 'lucide-react';
 
 const MovieNightPlanner = () => {
   const [movies, setMovies] = useState([]);
@@ -38,30 +37,30 @@ const MovieNightPlanner = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Movie Night Planner</h1>
+    <div className="max-w-4xl mx-auto p-6 bg-white">
+      <h1 className="text-3xl font-bold mb-6">Movie Night Planner</h1>
       
       {/* Add Movie Form */}
-      <div className={styles.formContainer}>
-        <div className={styles.formWrapper}>
+      <div className="mb-8 p-4 bg-gray-50 rounded-lg">
+        <div className="flex flex-wrap gap-4">
           <input
             type="text"
             value={newMovie.title}
             onChange={(e) => setNewMovie({ ...newMovie, title: e.target.value })}
             placeholder="Movie title"
-            className={styles.titleInput}
+            className="flex-1 p-2 border rounded"
           />
           <input
             type="text"
             value={newMovie.genre}
             onChange={(e) => setNewMovie({ ...newMovie, genre: e.target.value })}
             placeholder="Genre"
-            className={styles.genreInput}
+            className="w-32 p-2 border rounded"
           />
           <select
             value={newMovie.rating}
             onChange={(e) => setNewMovie({ ...newMovie, rating: Number(e.target.value) })}
-            className={styles.ratingSelect}
+            className="w-24 p-2 border rounded"
           >
             {[1, 2, 3, 4, 5].map(num => (
               <option key={num} value={num}>{num} Stars</option>
@@ -69,7 +68,7 @@ const MovieNightPlanner = () => {
           </select>
           <button
             onClick={editingId ? saveEdit : addMovie}
-            className={styles.actionButton}
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center gap-2"
           >
             {editingId ? (
               <>
@@ -87,38 +86,38 @@ const MovieNightPlanner = () => {
       </div>
 
       {/* Movie List */}
-      <div className={styles.moviesList}>
+      <div className="space-y-4">
         {movies.map(movie => (
           <div key={movie.id} 
-               className={`${styles.movieCard} ${movie.watched ? styles.movieCardWatched : styles.movieCardUnwatched}`}>
-            <div className={styles.movieContent}>
-              <div className={styles.movieInfo}>
-                <h3 className={styles.movieTitle}>{movie.title}</h3>
-                <div className={styles.movieDetails}>
+               className={`p-4 rounded-lg border ${movie.watched ? 'bg-green-50' : 'bg-white'}`}>
+            <div className="flex items-center justify-between">
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold">{movie.title}</h3>
+                <div className="flex items-center gap-4 text-sm text-gray-600">
                   <span>{movie.genre}</span>
-                  <div className={styles.movieRating}>
+                  <div className="flex items-center">
                     {[...Array(movie.rating)].map((_, i) => (
                       <Star key={i} size={16} className="text-yellow-400 fill-current" />
                     ))}
                   </div>
                 </div>
               </div>
-              <div className={styles.buttonGroup}>
+              <div className="flex items-center gap-2">
                 <button
                   onClick={() => toggleWatched(movie.id)}
-                  className={`${styles.watchedButton} ${movie.watched ? styles.watchedButtonActive : styles.watchedButtonInactive}`}
+                  className={`p-2 rounded ${movie.watched ? 'bg-green-100' : 'bg-gray-100'}`}
                 >
                   {movie.watched ? 'Watched' : 'Mark Watched'}
                 </button>
                 <button
                   onClick={() => startEditing(movie)}
-                  className={styles.editButton}
+                  className="p-2 rounded hover:bg-gray-100"
                 >
                   <Edit2 size={18} />
                 </button>
                 <button
                   onClick={() => deleteMovie(movie.id)}
-                  className={styles.deleteButton}
+                  className="p-2 rounded hover:bg-gray-100 text-red-500"
                 >
                   <Trash2 size={18} />
                 </button>
